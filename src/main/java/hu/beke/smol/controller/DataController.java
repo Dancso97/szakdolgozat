@@ -3,9 +3,11 @@ package hu.beke.smol.controller;
 import hu.beke.smol.dto.CreateDataDto;
 import hu.beke.smol.dto.CreateImageDto;
 import hu.beke.smol.dto.DataDto;
+import hu.beke.smol.dto.ImageDto;
 import hu.beke.smol.exceptions.ControllerException;
 import hu.beke.smol.exceptions.ServiceException;
 import hu.beke.smol.service.DataService;
+import hu.beke.smol.service.ImageService;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class DataController {
 
     @Autowired
     private DataService service;
+
+    @Autowired
+    private ImageService img_service;
 
     @GetMapping
     public List<DataDto> getAllData() throws ControllerException{
@@ -52,9 +57,18 @@ public class DataController {
             imageDto.setType(file.getContentType());
             imageDto.setData(file.getBytes());
 
+            System.out.println(imageDto.getType());
+
+            if(imageDto.getType() == null ){
+                imageDto.setType("img/jpg");
+            }
+            ImageDto createdImage = img_service.createImage(imageDto);
+
             CreateDataDto createDataDto = new CreateDataDto();
             createDataDto.setPlate_number(file.getOriginalFilename());
-            createDataDto.setPicture(imageDto);
+
+
+            createDataDto.setPicture(createdImage);
 
             DataDto returned = service.createData(createDataDto);
 

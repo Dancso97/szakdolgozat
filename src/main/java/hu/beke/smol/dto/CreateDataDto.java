@@ -13,7 +13,7 @@ public class CreateDataDto {
     private Timestamp start_time;
 
     @NotNull
-    private CreateImageDto picture;
+    private ImageDto picture;
 
     @NotNull
     private String plate_number;
