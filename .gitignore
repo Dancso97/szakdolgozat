@@ -38,3 +38,7 @@ build/
 .bmp
 .png 
 .JPG
+
+#Pictures in a specified folder
+
+py_anpr/kepek*
