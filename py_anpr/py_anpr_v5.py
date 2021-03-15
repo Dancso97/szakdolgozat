@@ -2,26 +2,32 @@ import cv2
 import imutils
 import numpy as np
 import pytesseract
-from matplotlib import pyplot as plt
 import os
 import re
 
+#TODO: Export pictures to a separate dir
 ###
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files (x86)\Tesseract\tesseract.exe'
 heightImg = 100
 widthImg  = 300
-
 ###
 
-def main():
+listOfPlates = {}
+
+def start_reading():
     dirname="kepek/"
     included_extensions = ['jpg','jpeg', 'bmp', 'png', 'JPG']
     file_names = [fn for fn in os.listdir(dirname) if any(fn.endswith(ext) for ext in included_extensions)]
-
+    i=0
     for imageName in file_names:
         print(imageName)
-        readLicensePlate(dirname+imageName)
+        plate_number = readLicensePlate(dirname+imageName)
+        list_item = {"plate"+str(i) : {"imageName":imageName, "PlateNumber":plate_number} }
+        listOfPlates.update(list_item)
+        i+=1
+    
+    print(listOfPlates)
 
 def reorder(myPoints):
 
@@ -84,15 +90,20 @@ def readLicensePlate(imageName):
         pts2 = np.float32([[0, 0],[widthImg, 0], [0, heightImg],[widthImg, heightImg]]) 
 
         matrix = cv2.getPerspectiveTransform(pts1, pts2)
+        #TODO widht and height calculate dinamically
         imgWarpColored = cv2.warpPerspective(img, matrix, (widthImg, heightImg))
         
+        cv2.imshow("ImgWarpColored", imgWarpColored)
+        cv2.waitKey(0)
         #OCR
-        text = pytesseract.image_to_string(imgWarpColored, config='--psm 11')
+        text = pytesseract.image_to_string(imgWarpColored, config='--psm 6')
+        #TODO: force 3 Char and 3 number, and if not that then its need more processing
         license_plate = re.findall(r"[A-Z]{1,3}.[0-9]{1,3}", text.replace(" ", "") )
-        print("Detected license plate Number is: {} With re filter: {}".format(text, license_plate))
+        #TODO: Check if list empty
+        
+        return license_plate
 
     else:
         print("No contour found")
-
-
-main()
+        
+        return 0
