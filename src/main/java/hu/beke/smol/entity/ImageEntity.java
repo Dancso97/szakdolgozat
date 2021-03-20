@@ -4,9 +4,11 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity(name = "image")
-@Table(name = "lpr_image")
+@Table(name = "image")
 @Data
 public class ImageEntity {
 
@@ -15,15 +17,16 @@ public class ImageEntity {
     private int id;
 
     @NotNull
-    @Column(name = "name")
-    private String name;
+    @Column(name = "date")
+    private Timestamp date;
 
     @NotNull
-    @Column(name = "type")
-    private String type;
-
-    @NotNull
-    @Column(name = "data")
+    @Column(name = "image")
     @Lob
-    private byte[] data;
+    private byte[] image;
+
+    @NotNull
+    @OneToOne
+    @JoinColumn(name = "pictureMetadata")
+    private ImageMetadataEntity pictureMetadata;
 }
