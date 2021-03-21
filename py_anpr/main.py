@@ -1,49 +1,86 @@
 import utils
 from py_anpr_v5 import start_reading
 import time
+import sys
 
+engineRunning = False
+backendPid = 0
+frontendPid = 0
 
-switcher = {
-    1: autoRun
-    2: autoStop
-} 
+def startChoice(choice):
+    try:
+        if choice == 1:
+            autoRun()
+        if choice == 2:
+            autoStop()
+        if choice == 3:
+            startReading()
+        if choice == 4:
+            if(engineRunning):
+                autoStop()
+                sys.exit(0)
+                
+            sys.exit(0)
+        else:
+            print("Invalid option")
+            menu()
+    except ValueError:
+        print("Invalid option with exception")
+        menu()
 
 def autoRun():
-    print("ar")
-
-    '''
- 
-    bpid = utils.startProcess(utils.BACKEND_RUN)
-    time.sleep(5)
-    backendStatus = utils.checkServerStatus(utils.BACKEND_URL)
-
-    if( backendStatus is True ):
-        utils.startProcess(utils.FRONTEND_RUN)
-        time.sleep(5)
-        frontendStatus = utils.checkServerStatus(utils.FRONTEND_URL)
+    print("Autorunning backend and frontend subsystems")
     
+    global backendPid 
+    global frontendPid
+    global engineRunning
+    
+    backendPid = utils.startProcess(utils.BACKEND_RUN)
+    
+    time.sleep(8)
+    backendStatus = utils.checkServerStatus(utils.BACKEND_HEALTH_URL)
+    frontendPid = utils.startProcess(utils.FRONTEND_RUN)
+    
+    time.sleep(8)
+    
+    frontendStatus = utils.checkServerStatus(utils.FRONTEND_URL)
     
     if(backendStatus and frontendStatus):
-        print("both up and running")            
-        #start_reading()
-    '''
+        print("Backend and Frontend up and running")
+        engineRunning = True
+        menu()
+    else:
+        print("Implement error handling")
 
 
 def autoStop():
-    print("as")
+    if(not engineRunning):
+        print("Engine is not running\n Exiting...")
+        menu()
+        
+    utils.stopProcess(backendPid)
+    utils.stopProcess(frontendPid)
+    
+    print("Engine stopped!")
+    menu()
+    
+def startReading():
+    if(not engineRunning):
+        print("Engine is not running\n Exiting...")
+    start_reading()
 
+def menu():
+    print("--- Menu ---")
+    print("1,Start engine\n2,Stop engine\n3,Start reading license plates\n4,Exit the program")
+    choice = input()
+    startChoice(int(choice))
+    
 
 def main():
     print("Welcome to ANPR!\n")
-   
-
-def menu()
-    print("--- Menu ---")
-    print("1,Start engine\n2,Stop engine")
-    choice = input()
-    funcToCall = switcher.get(choice, "Invalid input")
-
-
+    menu()
+ 
+        
 
 if __name__ == "__main__":
     main()
