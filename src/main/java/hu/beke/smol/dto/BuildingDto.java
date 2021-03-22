@@ -1,7 +1,7 @@
 package hu.beke.smol.dto;
 
-import hu.beke.smol.entity.ImageEntity;
-import hu.beke.smol.entity.ServicesEntity;
+import hu.beke.smol.entity.AddressEntity;
+import hu.beke.smol.entity.ClientEntity;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,25 +9,20 @@ import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Data
-public class DataDto {
+public class BuildingDto {
 
     @NotNull
     private int id;
 
     @NotNull
-    private String plate;
+    private Timestamp addedDate;
 
     @NotNull
-    private Timestamp createdDate;
-
-    private Timestamp stopDate;
-
     private String comment;
 
     @NotNull
-    private ImageEntity image;
+    private AddressEntity address;
 
     @NotNull
-    private ServicesEntity service;
-
+    private ClientEntity client;
 }

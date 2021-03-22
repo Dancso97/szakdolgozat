@@ -1,29 +1,25 @@
 package hu.beke.smol.dto;
 
-import hu.beke.smol.entity.ImageEntity;
+import hu.beke.smol.entity.BuildingEntity;
 import hu.beke.smol.entity.ServicesEntity;
 import lombok.Data;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Data
-public class CreateDataDto {
+public class CreateServiceTypeDto {
 
     @NotNull
-    private String plate;
+    private Timestamp startDate;
 
     @NotNull
-    private Timestamp createdDate;
-
-    private Timestamp stopDate;
-
-    private String comment;
-
-    @NotNull
-    private ImageEntity image;
+    private Timestamp endDate;
 
     @NotNull
     private ServicesEntity service;
 
+    @NotNull
+    private BuildingEntity building;
 }

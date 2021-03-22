@@ -36,9 +36,9 @@ def reorder(myPoints):
     add = myPoints.sum(1)
 
     myPointsNew[0] = myPoints[np.argmin(add)]
-    myPointsNew[3] =myPoints[np.argmax(add)]
+    myPointsNew[3] = myPoints[np.argmax(add)]
     diff = np.diff(myPoints, axis=1)
-    myPointsNew[1] =myPoints[np.argmin(diff)]
+    myPointsNew[1] = myPoints[np.argmin(diff)]
     myPointsNew[2] = myPoints[np.argmax(diff)]
 
     return myPointsNew
@@ -67,8 +67,11 @@ def drawRectangle(img,biggest,thickness):
 def readLicensePlate(imageName):
     img = cv2.imread(imageName)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    imgBlur = cv2.GaussianBlur(gray, (5, 5), 1) #GaussianBlur
-    bfilter = cv2.bilateralFilter(gray, 13, 17, 17) #Noise reduction
+    #imgBlur = cv2.GaussianBlur(gray, (5, 5), 1) #GaussianBlur
+    #bfilter = cv2.bilateralFilter(gray, 13, 17, 17) #Noise reduction
+    cv2.GaussianBlur(gray, (5, 5), 1) #GaussianBlur
+    cv2.bilateralFilter(gray, 13, 17, 17)
+    
     edged = cv2.Canny(gray, 30, 200) #Edge detection
 
     ## FIND ALL COUNTOURS
@@ -90,18 +93,26 @@ def readLicensePlate(imageName):
         pts2 = np.float32([[0, 0],[widthImg, 0], [0, heightImg],[widthImg, heightImg]]) 
 
         matrix = cv2.getPerspectiveTransform(pts1, pts2)
+        
         #TODO widht and height calculate dinamically
+        
         imgWarpColored = cv2.warpPerspective(img, matrix, (widthImg, heightImg))
         
         cv2.imshow("ImgWarpColored", imgWarpColored)
         cv2.waitKey(0)
+        
+        
         #OCR
         text = pytesseract.image_to_string(imgWarpColored, config='--psm 6')
-        #TODO: force 3 Char and 3 number, and if not that then its need more processing
-        license_plate = re.findall(r"[A-Z]{1,3}.[0-9]{1,3}", text.replace(" ", "") )
-        #TODO: Check if list empty
         
-        return license_plate
+        
+        license_plate = re.findall(r"[A-Z]{3}.[0-9]{3}", text.replace(" ", "") )
+        
+        ##TODO: Check if list empty
+        if(len(license_plate) > 0):
+            return license_plate
+        
+        return 0 ## Make it sep directory, check another regex eg: 3 char 2 number
 
     else:
         print("No contour found")

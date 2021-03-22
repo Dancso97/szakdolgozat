@@ -1,6 +1,6 @@
 package hu.beke.smol.dto;
 
-import hu.beke.smol.entity.ImageEntity;
+import hu.beke.smol.entity.BuildingEntity;
 import hu.beke.smol.entity.ServicesEntity;
 import lombok.Data;
 
@@ -8,22 +8,21 @@ import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Data
-public class CreateDataDto {
+public class ServiceTypeDto {
 
     @NotNull
-    private String plate;
+    private int id;
 
     @NotNull
-    private Timestamp createdDate;
-
-    private Timestamp stopDate;
-
-    private String comment;
+    private Timestamp startDate;
 
     @NotNull
-    private ImageEntity image;
+    private Timestamp endDate;
 
     @NotNull
     private ServicesEntity service;
+
+    @NotNull
+    private BuildingEntity building;
 
 }

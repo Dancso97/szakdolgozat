@@ -10,14 +10,17 @@ import java.sql.Timestamp;
 @Table(name = "servicetype")
 @Data
 public class ServiceTypeEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "startDate")
+    @NotNull
     private Timestamp startDate;
 
     @Column(name = "endDate")
+    @NotNull
     private Timestamp endDate;
 
     @NotNull
@@ -29,4 +32,5 @@ public class ServiceTypeEntity {
     @OneToOne
     @JoinColumn(name = "building")
     private BuildingEntity building;
+
 }

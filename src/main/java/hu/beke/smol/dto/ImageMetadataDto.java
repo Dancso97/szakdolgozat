@@ -1,24 +1,26 @@
 package hu.beke.smol.dto;
 
-import hu.beke.smol.entity.ImageMetadataEntity;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Data
-public class ImageDto {
+public class ImageMetadataDto {
 
     @NotNull
     private int id;
 
     @NotNull
-    private Timestamp date;
+    private String name;
 
     @NotNull
-    private byte[] image;
+    private int height;
 
     @NotNull
-    private ImageMetadataEntity pictureMetadata;
+    private int widht;
+
+    @NotNull
+    private Timestamp originalDate;
 
 }
