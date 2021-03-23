@@ -20,37 +20,6 @@ public class DataRepositoryImpl implements DataRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-
-    @Override
-    public void createDataEntity(DataEntity entity) throws PersistenceException {
-        try {
-            this.entityManager.persist(entity);
-            this.entityManager.flush();
-        }catch (RuntimeException e){
-            throw new PersistenceException("createDataEntity failed!", e);
-        }
-    }
-
-    @Override
-    public void updateDataEntity(DataEntity entity) throws PersistenceException {
-        try {
-            this.entityManager.merge(entity);
-            this.entityManager.flush();
-        }catch (RuntimeException e){
-            throw new PersistenceException("updateDataEntity failed!", e);
-        }
-    }
-
-    @Override
-    public void deleteDataEntity(int id) throws PersistenceException {
-        try {
-            this.entityManager.remove(getDataEntityById(id));
-            this.entityManager.flush();
-        }catch (RuntimeException e){
-            throw new PersistenceException("deleteDataEntity failed!", e);
-        }
-    }
-
     @Override
     public DataEntity getDataEntityById(int id) throws PersistenceException {
         DataEntity result = null;

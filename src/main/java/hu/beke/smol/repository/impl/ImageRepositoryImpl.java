@@ -22,36 +22,6 @@ public class ImageRepositoryImpl implements ImageRepository {
     private EntityManager entityManager;
 
     @Override
-    public void createImageEntity(ImageEntity entity) throws PersistenceException {
-        try {
-            this.entityManager.persist(entity);
-            this.entityManager.flush();
-        } catch (RuntimeException e) {
-            throw new PersistenceException("createImageEntity failed!", e);
-        }
-    }
-
-    @Override
-    public void updateImageEntity(ImageEntity entity) throws PersistenceException {
-        try {
-            this.entityManager.merge(entity);
-            this.entityManager.flush();
-        } catch (RuntimeException e) {
-            throw new PersistenceException("updateImageEntity failed!", e);
-        }
-    }
-
-    @Override
-    public void deleteImageEntity(int id) throws PersistenceException {
-        try {
-            this.entityManager.refresh(getImageEntityById(id));
-            this.entityManager.flush();
-        } catch (RuntimeException e) {
-            throw new PersistenceException("deleteImageEntity failed!", e);
-        }
-    }
-
-    @Override
     public ImageEntity getImageEntityById(int id) throws PersistenceException {
         ImageEntity result = null;
         try {
