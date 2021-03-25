@@ -4,7 +4,6 @@ import hu.beke.smol.entity.AddressEntity;
 import hu.beke.smol.entity.ClientEntity;
 import lombok.Data;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 

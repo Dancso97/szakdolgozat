@@ -2,7 +2,6 @@ package hu.beke.smol.dto;
 
 import lombok.Data;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 

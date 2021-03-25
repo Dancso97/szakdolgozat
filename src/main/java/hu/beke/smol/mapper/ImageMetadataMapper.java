@@ -1,7 +1,7 @@
 package hu.beke.smol.mapper;
 
-import hu.beke.smol.dto.ImageMetadataDto;
 import hu.beke.smol.dto.CreateImageMetadataDto;
+import hu.beke.smol.dto.ImageMetadataDto;
 import hu.beke.smol.entity.ImageMetadataEntity;
 import org.mapstruct.Mapper;
 

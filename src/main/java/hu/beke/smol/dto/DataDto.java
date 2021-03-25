@@ -4,7 +4,6 @@ import hu.beke.smol.entity.ImageEntity;
 import hu.beke.smol.entity.ServicesEntity;
 import lombok.Data;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 

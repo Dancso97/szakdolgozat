@@ -1,6 +1,5 @@
 package hu.beke.smol.repository.impl;
 
-import hu.beke.smol.entity.BuildingEntity;
 import hu.beke.smol.entity.ImageMetadataEntity;
 import hu.beke.smol.exceptions.PersistenceException;
 import hu.beke.smol.repository.ImageMetadataRepository;

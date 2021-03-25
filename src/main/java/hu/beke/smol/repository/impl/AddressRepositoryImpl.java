@@ -1,7 +1,6 @@
 package hu.beke.smol.repository.impl;
 
 import hu.beke.smol.entity.AddressEntity;
-import hu.beke.smol.entity.ImageEntity;
 import hu.beke.smol.exceptions.PersistenceException;
 import hu.beke.smol.repository.AddressRepository;
 import lombok.NoArgsConstructor;

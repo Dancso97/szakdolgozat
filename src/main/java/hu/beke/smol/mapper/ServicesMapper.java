@@ -1,7 +1,7 @@
 package hu.beke.smol.mapper;
 
-import hu.beke.smol.dto.ServicesDto;
 import hu.beke.smol.dto.CreateServicesDto;
+import hu.beke.smol.dto.ServicesDto;
 import hu.beke.smol.entity.ServicesEntity;
 import org.mapstruct.Mapper;
 

@@ -8,7 +8,6 @@ import hu.beke.smol.exceptions.ControllerException;
 import hu.beke.smol.exceptions.ServiceException;
 import hu.beke.smol.service.DataService;
 import hu.beke.smol.service.ImageService;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
