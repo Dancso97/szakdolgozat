@@ -13,6 +13,7 @@ public class ImageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @NotNull
@@ -26,6 +27,6 @@ public class ImageEntity {
 
     @NotNull
     @OneToOne
-    @JoinColumn(name = "pictureMetadata")
+    @JoinColumn(name = "image_metadata")
     private ImageMetadataEntity pictureMetadata;
 }

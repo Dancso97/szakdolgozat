@@ -1,9 +1,12 @@
 package hu.beke.smol.controller;
 
 import hu.beke.smol.dto.CreateImageDto;
+import hu.beke.smol.dto.CreateImageMetadataDto;
 import hu.beke.smol.dto.ImageDto;
+import hu.beke.smol.dto.ImageMetadataDto;
 import hu.beke.smol.exceptions.ControllerException;
 import hu.beke.smol.exceptions.ServiceException;
+import hu.beke.smol.service.ImageMetadataService;
 import hu.beke.smol.service.ImageService;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,9 @@ public class ImageController {
     @Autowired
     private ImageService service;
 
+    @Autowired
+    private ImageMetadataService metadataService;
+
     @GetMapping
     public List<ImageDto> getAllImages() throws ControllerException {
         try{
@@ -42,7 +48,7 @@ public class ImageController {
         }
     }
 
-    /*
+
     @PostMapping
     public ImageDto createImage(@RequestBody @Valid CreateImageDto imageDto) throws ControllerException {
         try {
@@ -51,16 +57,17 @@ public class ImageController {
             throw new ControllerException("Failed in createImage", e);
         }
     }
-    */
+
 
     @PostMapping("/upload")
-    public HttpStatus createImage(@RequestParam("file") MultipartFile file) throws ControllerException {
+    public HttpStatus createImage(@RequestPart(value = "file", required=true) MultipartFile file, @RequestPart(required=true) @Valid CreateImageMetadataDto metadata ) throws ControllerException {
         try {
 
             CreateImageDto imageDto = new CreateImageDto();
-            imageDto.setName(file.getOriginalFilename());
-            imageDto.setType(file.getContentType());
-            imageDto.setData(file.getBytes());
+            ImageMetadataDto metadataDto = metadataService.createImageMetadata(metadata);
+
+            imageDto.setImage(file.getBytes());
+            imageDto.setPictureMetadata(metadataDto);
 
             ImageDto returned = service.createImage(imageDto);
 
@@ -69,7 +76,6 @@ public class ImageController {
             throw new ControllerException("Failed in createImage", e);
         }
     }
-
 
     @PutMapping
     public HttpStatus updateImage(@RequestParam @Valid ImageDto imageDto) throws ControllerException {

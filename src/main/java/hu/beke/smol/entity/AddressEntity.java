@@ -12,6 +12,7 @@ public class AddressEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "zip")
     private int zip;
 
     @NotNull

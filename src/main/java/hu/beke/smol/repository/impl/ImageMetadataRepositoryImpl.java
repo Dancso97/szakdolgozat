@@ -24,7 +24,7 @@ public class ImageMetadataRepositoryImpl implements ImageMetadataRepository {
     public ImageMetadataEntity getImageMetadataEntityById(int id) throws PersistenceException {
         ImageMetadataEntity result = null;
         try {
-            TypedQuery<ImageMetadataEntity> query = this.entityManager.createQuery("SELECT entity FROM building entity WHERE entity.id = :id", ImageMetadataEntity.class);
+            TypedQuery<ImageMetadataEntity> query = this.entityManager.createQuery("SELECT e FROM Imagemetadata e WHERE e.id = :id", ImageMetadataEntity.class);
             query.setParameter("id", id);
 
             result = query.getSingleResult();
@@ -38,7 +38,7 @@ public class ImageMetadataRepositoryImpl implements ImageMetadataRepository {
     public List<ImageMetadataEntity> getAllImageMetadata() throws PersistenceException {
         List<ImageMetadataEntity> result = null;
         try {
-            TypedQuery<ImageMetadataEntity> query = this.entityManager.createQuery("SELECT entity FROM building entity", ImageMetadataEntity.class);
+            TypedQuery<ImageMetadataEntity> query = this.entityManager.createQuery("SELECT E FROM Imagemetadata E", ImageMetadataEntity.class);
             result = query.getResultList();
         } catch (RuntimeException e) {
             throw new PersistenceException("getAllImageMetadata failed!", e);

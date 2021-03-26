@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class ImageMetadataServiceImpl implements ImageMetadataService {
 
-    private static final ImageMetadataMapper ImageMetadata_MAPPER = Mappers.getMapper(ImageMetadataMapper.class);
+    private static final ImageMetadataMapper IMAGEMETADATA_MAPPER = Mappers.getMapper(ImageMetadataMapper.class);
 
     @Autowired
     ImageMetadataRepository imageMetadataRepository;
@@ -31,10 +31,10 @@ public class ImageMetadataServiceImpl implements ImageMetadataService {
     @Override
     public ImageMetadataDto createImageMetadata(CreateImageMetadataDto createImageMetadataDto) throws ServiceException {
         try{
-            ImageMetadataEntity entity = ImageMetadata_MAPPER.mapCreateImageMetadataDtoToEntity(createImageMetadataDto);
+            ImageMetadataEntity entity = IMAGEMETADATA_MAPPER.mapCreateImageMetadataDtoToEntity(createImageMetadataDto);
             commonRepository.createEntity(entity);
 
-            return ImageMetadata_MAPPER.mapImageMetadataEntityToDto(entity);
+            return IMAGEMETADATA_MAPPER.mapImageMetadataEntityToDto(entity);
 
         }catch (PersistenceException e){
             throw new ServiceException("Failed in createImageMetadata!",e);
@@ -44,10 +44,10 @@ public class ImageMetadataServiceImpl implements ImageMetadataService {
     @Override
     public ImageMetadataDto updateImageMetadata(ImageMetadataDto ImageMetadataDto) throws ServiceException {
         try{
-            ImageMetadataEntity entity = ImageMetadata_MAPPER.mapImageMetadataDtoToEntity(ImageMetadataDto);
+            ImageMetadataEntity entity = IMAGEMETADATA_MAPPER.mapImageMetadataDtoToEntity(ImageMetadataDto);
             commonRepository.updateEntity(entity);
 
-            return ImageMetadata_MAPPER.mapImageMetadataEntityToDto(entity);
+            return IMAGEMETADATA_MAPPER.mapImageMetadataEntityToDto(entity);
 
         }catch (PersistenceException e){
             throw new ServiceException("Failed in updateImageMetadata!",e);
@@ -66,7 +66,7 @@ public class ImageMetadataServiceImpl implements ImageMetadataService {
     @Override
     public ImageMetadataDto getImageMetadataById(int id) throws ServiceException {
         try{
-            return ImageMetadata_MAPPER.mapImageMetadataEntityToDto(imageMetadataRepository.getImageMetadataEntityById(id));
+            return IMAGEMETADATA_MAPPER.mapImageMetadataEntityToDto(imageMetadataRepository.getImageMetadataEntityById(id));
         }catch (PersistenceException e){
             throw new ServiceException("Failed in updateImageMetadata!",e);
         }
@@ -75,7 +75,7 @@ public class ImageMetadataServiceImpl implements ImageMetadataService {
     @Override
     public List<ImageMetadataDto> getAllImageMetadata() throws ServiceException {
         try {
-            return ImageMetadata_MAPPER.mapImageMetadataEntitiesToDtos(imageMetadataRepository.getAllImageMetadata());
+            return IMAGEMETADATA_MAPPER.mapImageMetadataEntitiesToDtos(imageMetadataRepository.getAllImageMetadata());
         }catch (PersistenceException e){
             throw new ServiceException("getAllImageMetadata in service failed ", e);
         }

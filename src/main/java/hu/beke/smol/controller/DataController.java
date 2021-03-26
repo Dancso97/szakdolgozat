@@ -47,37 +47,24 @@ public class DataController {
         }
     }
 
+    /*
     @PostMapping("/upload")
     public HttpStatus createData(@RequestParam("file") MultipartFile file) throws ControllerException {
         try {
 
             CreateImageDto imageDto = new CreateImageDto();
-            imageDto.setName(file.getOriginalFilename());
-            imageDto.setType(file.getContentType());
-            imageDto.setData(file.getBytes());
-
-            System.out.println(imageDto.getType());
-
-            if(imageDto.getType() == null ){
-                imageDto.setType("img/jpg");
-            }
             ImageDto createdImage = img_service.createImage(imageDto);
-
             CreateDataDto createDataDto = new CreateDataDto();
-            createDataDto.setPlate_number(file.getOriginalFilename());
-
-
-            createDataDto.setPicture(createdImage);
-
             DataDto returned = service.createData(createDataDto);
+
 
             return HttpStatus.OK;
 
-        }catch (ServiceException | IOException e){
+        }catch (ServiceException e){
             throw new ControllerException("Failed in createData in upload controller! ", e);
         }
     }
-
+ */
     @PutMapping
     public HttpStatus updateDataDto(@RequestParam @Valid DataDto dataDto) throws ControllerException {
         try {

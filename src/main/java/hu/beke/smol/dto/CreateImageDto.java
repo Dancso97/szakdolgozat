@@ -16,6 +16,6 @@ public class CreateImageDto {
     private byte[] image;
 
     @NotNull
-    private ImageMetadataEntity pictureMetadata;
+    private ImageMetadataDto pictureMetadata;
 
 }

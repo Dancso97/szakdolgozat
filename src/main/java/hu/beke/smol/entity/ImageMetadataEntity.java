@@ -6,13 +6,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
-@Entity(name = "imagemetadata")
+@Entity(name = "Imagemetadata")
 @Table(name = "imagemetadata")
 @Data
 public class ImageMetadataEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @NotNull
@@ -24,10 +25,10 @@ public class ImageMetadataEntity {
     private int height;
 
     @NotNull
-    @Column(name = "widht")
-    private int widht;
+    @Column(name = "width")
+    private int width;
 
     @NotNull
-    @Column(name = "originalDate")
+    @Column(name = "original_date")
     private Timestamp originalDate;
 }

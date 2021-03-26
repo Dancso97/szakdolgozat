@@ -3,7 +3,7 @@ package hu.beke.smol.dto;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
+import java.util.Date;
 
 @Data
 public class ImageMetadataDto {
@@ -18,9 +18,9 @@ public class ImageMetadataDto {
     private int height;
 
     @NotNull
-    private int widht;
+    private int width;
 
     @NotNull
-    private Timestamp originalDate;
+    private Date originalDate;
 
 }

@@ -5,6 +5,7 @@ import hu.beke.smol.dto.ImageMetadataDto;
 import hu.beke.smol.entity.ImageMetadataEntity;
 import org.mapstruct.Mapper;
 
+
 import java.util.List;
 
 @Mapper
