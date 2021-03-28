@@ -50,7 +50,8 @@ def autoRun():
         engineRunning = True
         menu()
     else:
-        print("Implement error handling")
+        if(backendPid != 0 and frontendPid != 0):
+            engineRunning = True
 
 
 def autoStop():
@@ -58,8 +59,16 @@ def autoStop():
         print("Engine is not running\n Exiting...")
         menu()
         
+    global backendPid 
+    global frontendPid
+    global engineRunning
+    
+        
     utils.stopProcess(backendPid)
     utils.stopProcess(frontendPid)
+    
+    backendPid, frontendPid = 0
+    engineRunning = False
     
     print("Engine stopped!")
     menu()

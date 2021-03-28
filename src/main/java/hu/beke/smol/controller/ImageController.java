@@ -40,6 +40,7 @@ public class ImageController {
     }
 
     @GetMapping("/{id}")
+    //TODO:If id not found return null or stg.
     public ImageDto getImageById(@Valid @PathVariable int id) throws ControllerException {
         try{
             return service.getImageById(id);

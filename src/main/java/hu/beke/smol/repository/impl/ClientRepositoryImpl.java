@@ -24,7 +24,7 @@ public class ClientRepositoryImpl implements ClientRepository {
     public ClientEntity getClientEntityById(int id) throws PersistenceException {
         ClientEntity result = null;
         try {
-            TypedQuery<ClientEntity> query = this.entityManager.createQuery("SELECT entity FROM client entity WHERE entity.id = :id", ClientEntity.class);
+            TypedQuery<ClientEntity> query = this.entityManager.createQuery("SELECT e FROM Client e WHERE e.id = :id", ClientEntity.class);
             query.setParameter("id", id);
 
             result = query.getSingleResult();
@@ -38,7 +38,7 @@ public class ClientRepositoryImpl implements ClientRepository {
     public List<ClientEntity> getAllClients() throws PersistenceException {
         List<ClientEntity> result = null;
         try {
-            TypedQuery<ClientEntity> query = this.entityManager.createQuery("SELECT entity FROM client entity", ClientEntity.class);
+            TypedQuery<ClientEntity> query = this.entityManager.createQuery("SELECT e FROM Client e", ClientEntity.class);
             result = query.getResultList();
         } catch (RuntimeException e) {
             throw new PersistenceException("getAllClients failed!", e);

@@ -85,7 +85,13 @@ def readLicensePlate(imageName):
     if biggest is not None:
         biggest=reorder(biggest)
         cv2.drawContours(imgBigContour, biggest, -1, (0, 255, 0), 20) # DRAW THE BIGGEST CONTOUR
+        
         imgBigContour = drawRectangle(imgBigContour,biggest,2)
+        
+        cv2.namedWindow('jpg', cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('jpg', 500, 500)
+        cv2.imshow('jpg', imgBigContour)
+        cv2.waitKey(0)
         
         #PREPARE POINTS FOR WARP
         
