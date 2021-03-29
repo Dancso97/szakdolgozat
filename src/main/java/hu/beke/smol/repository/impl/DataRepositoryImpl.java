@@ -24,7 +24,7 @@ public class DataRepositoryImpl implements DataRepository {
     public DataEntity getDataEntityById(int id) throws PersistenceException {
         DataEntity result = null;
         try {
-            TypedQuery<DataEntity> query = this.entityManager.createQuery("SELECT entity FROM data entity WHERE entity.id = :id", DataEntity.class);
+            TypedQuery<DataEntity> query = this.entityManager.createQuery("SELECT entity FROM Data entity WHERE entity.id = :id", DataEntity.class);
             query.setParameter("id", id);
 
             result = query.getSingleResult();
@@ -38,7 +38,7 @@ public class DataRepositoryImpl implements DataRepository {
     public List<DataEntity> getAllDataEntities() throws PersistenceException {
         List<DataEntity> result = null;
         try {
-            TypedQuery<DataEntity> query = this.entityManager.createQuery("SELECT entity FROM data entity", DataEntity.class);
+            TypedQuery<DataEntity> query = this.entityManager.createQuery("SELECT entity FROM Data entity", DataEntity.class);
             result = query.getResultList();
         }catch (RuntimeException e){
             throw new PersistenceException("getAllDataEntities failed!", e);

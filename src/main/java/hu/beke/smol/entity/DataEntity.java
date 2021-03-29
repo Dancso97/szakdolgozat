@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
-@Entity(name = "data")
+@Entity(name = "Data")
 @Table(name = "data")
 @Data
 public class DataEntity {
@@ -21,10 +21,10 @@ public class DataEntity {
     private String plate;
 
     @NotNull
-    @Column(name = "createdDate")
+    @Column(name = "created_date")
     private Timestamp createdDate;
 
-    @Column(name = "stopDate")
+    @Column(name = "stop_date")
     private Timestamp stopDate;
 
     @Column(name = "comment")

@@ -24,7 +24,7 @@ public class ServiceTypeRepositoryImpl implements ServiceTypeRepository {
     public ServiceTypeEntity getServiceTypeEntityById(int id) throws PersistenceException {
         ServiceTypeEntity result = null;
         try {
-            TypedQuery<ServiceTypeEntity> query = this.entityManager.createQuery("SELECT entity FROM servicetype entity WHERE entity.id = :id", ServiceTypeEntity.class);
+            TypedQuery<ServiceTypeEntity> query = this.entityManager.createQuery("SELECT entity FROM Servicetype entity WHERE entity.id = :id", ServiceTypeEntity.class);
             query.setParameter("id", id);
 
             result = query.getSingleResult();
@@ -38,7 +38,7 @@ public class ServiceTypeRepositoryImpl implements ServiceTypeRepository {
     public List<ServiceTypeEntity> getAllServiceType() throws PersistenceException {
         List<ServiceTypeEntity> result = null;
         try {
-            TypedQuery<ServiceTypeEntity> query = this.entityManager.createQuery("SELECT entity FROM servicetype entity", ServiceTypeEntity.class);
+            TypedQuery<ServiceTypeEntity> query = this.entityManager.createQuery("SELECT entity FROM Servicetype entity", ServiceTypeEntity.class);
             result = query.getResultList();
         } catch (RuntimeException e) {
             throw new PersistenceException("getAllServiceType failed!", e);

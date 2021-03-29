@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
-@Entity(name = "building")
+@Entity(name = "Building")
 @Table(name = "building")
 @Data
 public class BuildingEntity {
@@ -17,7 +17,7 @@ public class BuildingEntity {
     private int id;
 
     @NotNull
-    @Column(name = "addedDate")
+    @Column(name = "added_date")
     private Timestamp addedDate;
 
     @NotNull

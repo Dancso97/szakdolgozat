@@ -1,7 +1,5 @@
 package hu.beke.smol.dto;
 
-import hu.beke.smol.entity.AddressEntity;
-import hu.beke.smol.entity.ClientEntity;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -17,8 +15,8 @@ public class CreateBuildingDto {
     private String comment;
 
     @NotNull
-    private AddressEntity address;
+    private AddressDto address;
 
     @NotNull
-    private ClientEntity client;
+    private ClientDto client;
 }

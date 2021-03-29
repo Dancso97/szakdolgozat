@@ -25,7 +25,7 @@ public class ImageRepositoryImpl implements ImageRepository {
     public ImageEntity getImageEntityById(int id) throws PersistenceException {
         ImageEntity result = null;
         try {
-            TypedQuery<ImageEntity> query = this.entityManager.createQuery("SELECT entity FROM image entity WHERE entity.id = :id", ImageEntity.class);
+            TypedQuery<ImageEntity> query = this.entityManager.createQuery("SELECT entity FROM Image entity WHERE entity.id = :id", ImageEntity.class);
             query.setParameter("id", id);
 
             result = query.getSingleResult();
@@ -39,7 +39,7 @@ public class ImageRepositoryImpl implements ImageRepository {
     public List<ImageEntity> getAllImageEntities() throws PersistenceException {
         List<ImageEntity> result = null;
         try {
-            TypedQuery<ImageEntity> query = this.entityManager.createQuery("SELECT entity FROM image entity", ImageEntity.class);
+            TypedQuery<ImageEntity> query = this.entityManager.createQuery("SELECT entity FROM Image entity", ImageEntity.class);
             result = query.getResultList();
         } catch (RuntimeException e) {
             throw new PersistenceException("getAllImageEntities failed!", e);

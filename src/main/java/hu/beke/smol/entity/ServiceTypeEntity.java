@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
-@Entity(name = "servicetype")
+@Entity(name = "Servicetype")
 @Table(name = "servicetype")
 @Data
 public class ServiceTypeEntity {
@@ -16,11 +16,11 @@ public class ServiceTypeEntity {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "startDate")
+    @Column(name = "start_date")
     @NotNull
     private Timestamp startDate;
 
-    @Column(name = "endDate")
+    @Column(name = "end_date")
     @NotNull
     private Timestamp endDate;
 

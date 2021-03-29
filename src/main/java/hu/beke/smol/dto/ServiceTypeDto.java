@@ -1,7 +1,5 @@
 package hu.beke.smol.dto;
 
-import hu.beke.smol.entity.BuildingEntity;
-import hu.beke.smol.entity.ServicesEntity;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -20,9 +18,9 @@ public class ServiceTypeDto {
     private Timestamp endDate;
 
     @NotNull
-    private ServicesEntity service;
+    private ServicesDto service;
 
     @NotNull
-    private BuildingEntity building;
+    private BuildingDto building;
 
 }

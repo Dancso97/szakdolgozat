@@ -1,6 +1,5 @@
 package hu.beke.smol.dto;
 
-import hu.beke.smol.entity.ImageMetadataEntity;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;

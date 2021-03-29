@@ -1,7 +1,5 @@
 package hu.beke.smol.dto;
 
-import hu.beke.smol.entity.ImageEntity;
-import hu.beke.smol.entity.ServicesEntity;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -21,9 +19,9 @@ public class CreateDataDto {
     private String comment;
 
     @NotNull
-    private ImageEntity image;
+    private ImageDto image;
 
     @NotNull
-    private ServicesEntity service;
+    private ServicesDto service;
 
 }

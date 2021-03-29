@@ -2,8 +2,6 @@ package hu.beke.smol.controller;
 
 import hu.beke.smol.dto.ClientDto;
 import hu.beke.smol.dto.CreateClientDto;
-import hu.beke.smol.dto.CreateImageMetadataDto;
-import hu.beke.smol.dto.ImageMetadataDto;
 import hu.beke.smol.exceptions.ControllerException;
 import hu.beke.smol.exceptions.ServiceException;
 import hu.beke.smol.service.ClientService;

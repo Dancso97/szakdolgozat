@@ -24,7 +24,7 @@ public class ServicesRepositoryImpl implements ServicesRepository {
     public ServicesEntity getServicesEntityById(int id) throws PersistenceException {
         ServicesEntity result = null;
         try {
-            TypedQuery<ServicesEntity> query = this.entityManager.createQuery("SELECT entity FROM services entity WHERE entity.id = :id", ServicesEntity.class);
+            TypedQuery<ServicesEntity> query = this.entityManager.createQuery("SELECT entity FROM Services entity WHERE entity.id = :id", ServicesEntity.class);
             query.setParameter("id", id);
 
             result = query.getSingleResult();
@@ -38,7 +38,7 @@ public class ServicesRepositoryImpl implements ServicesRepository {
     public List<ServicesEntity> getAllServices() throws PersistenceException {
         List<ServicesEntity> result = null;
         try {
-            TypedQuery<ServicesEntity> query = this.entityManager.createQuery("SELECT entity FROM services entity", ServicesEntity.class);
+            TypedQuery<ServicesEntity> query = this.entityManager.createQuery("SELECT entity FROM Services entity", ServicesEntity.class);
             result = query.getResultList();
         } catch (RuntimeException e) {
             throw new PersistenceException("getAllServices failed!", e);

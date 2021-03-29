@@ -24,7 +24,7 @@ public class AddressRepositoryImpl implements AddressRepository {
     public AddressEntity getAddressEntityById(int id) throws PersistenceException {
         AddressEntity result = null;
         try {
-            TypedQuery<AddressEntity> query = this.entityManager.createQuery("SELECT entity FROM address entity WHERE entity.zip = :id", AddressEntity.class);
+            TypedQuery<AddressEntity> query = this.entityManager.createQuery("SELECT entity FROM Address entity WHERE entity.zip = :id", AddressEntity.class);
             query.setParameter("id", id);
 
             result = query.getSingleResult();
@@ -38,7 +38,7 @@ public class AddressRepositoryImpl implements AddressRepository {
     public List<AddressEntity> getAllAddress() throws PersistenceException {
         List<AddressEntity> result = null;
         try {
-            TypedQuery<AddressEntity> query = this.entityManager.createQuery("SELECT entity FROM address entity", AddressEntity.class);
+            TypedQuery<AddressEntity> query = this.entityManager.createQuery("SELECT entity FROM Address entity", AddressEntity.class);
             result = query.getResultList();
         } catch (RuntimeException e) {
             throw new PersistenceException("getAllAddress failed!", e);

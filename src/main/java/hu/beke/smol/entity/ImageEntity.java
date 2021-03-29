@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
-@Entity(name = "image")
+@Entity(name = "Image")
 @Table(name = "image")
 @Data
 public class ImageEntity {

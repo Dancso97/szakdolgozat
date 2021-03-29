@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "address")
+@Entity(name = "Address")
 @Table(name = "address")
 @Data
 public class AddressEntity {

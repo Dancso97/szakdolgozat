@@ -24,7 +24,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
     public BuildingEntity getBuildingEntityById(int id) throws PersistenceException {
         BuildingEntity result = null;
         try {
-            TypedQuery<BuildingEntity> query = this.entityManager.createQuery("SELECT entity FROM building entity WHERE entity.id = :id", BuildingEntity.class);
+            TypedQuery<BuildingEntity> query = this.entityManager.createQuery("SELECT entity FROM Building entity WHERE entity.id = :id", BuildingEntity.class);
             query.setParameter("id", id);
 
             result = query.getSingleResult();
@@ -38,7 +38,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
     public List<BuildingEntity> getAllBuildings() throws PersistenceException {
         List<BuildingEntity> result = null;
         try {
-            TypedQuery<BuildingEntity> query = this.entityManager.createQuery("SELECT entity FROM building entity", BuildingEntity.class);
+            TypedQuery<BuildingEntity> query = this.entityManager.createQuery("SELECT entity FROM Building entity", BuildingEntity.class);
             result = query.getResultList();
         } catch (RuntimeException e) {
             throw new PersistenceException("getAllBuildings failed!", e);
