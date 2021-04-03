@@ -19,9 +19,19 @@ public class CreateDataDto {
     private String comment;
 
     @NotNull
+    private int pictureId;
+
+    @NotNull
+    private int serviceId;
+
+
+    /*
+    @NotNull
     private ImageDto image;
 
     @NotNull
     private ServicesDto service;
 
+    /*
+     */
 }
