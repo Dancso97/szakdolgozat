@@ -7,19 +7,30 @@ import { AppMenuComponent } from './app-menu/app-menu.component';
 import {TieredMenuModule} from 'primeng/tieredmenu';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/button';
+import { DatatableComponent } from './datatable/datatable.component';
+import { ImagetableComponent } from './imagetable/imagetable.component';
+import {TableModule} from 'primeng/table';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppMenuComponent
+    AppMenuComponent,
+    DatatableComponent,
+    ImagetableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserModule,
     BrowserAnimationsModule,
     TieredMenuModule,
-    ButtonModule
+    ButtonModule,
+    TableModule,
+    HttpClientModule,
+    FormsModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

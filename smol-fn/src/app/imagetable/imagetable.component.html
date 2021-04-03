@@ -1,0 +1,21 @@
+<p-toast></p-toast>
+<p-table [value]="images">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Quantity</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-image>
+    <tr>
+      <td>{{image.id}}</td>
+      <td>{{image.date}}</td>
+      <td>
+        <img src="data:image/JPEG;base64,{{image.image}}" alt="" style="width: 300px"/>
+      </td>
+      <td> <button type="button" pButton pRipple (click)="showImageMetadata(image.id)" label="Metaadatok" class="p-button-info"></button> </td>
+    </tr>
+  </ng-template>
+</p-table>
