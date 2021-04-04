@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Image} from './image';
-import {ImageService} from './imageService';
+import {Image} from '../../models/image';
+import {ImageService} from '../../services/imageService';
 import {MessageService} from 'primeng/api';
 
 @Component({
@@ -11,7 +11,8 @@ import {MessageService} from 'primeng/api';
 })
 export class ImagetableComponent implements OnInit {
 
-  images: Image[] = [];
+  // @ts-ignore
+  images: Image[];
 
   constructor(private imageService: ImageService, private messageService: MessageService) {
   }

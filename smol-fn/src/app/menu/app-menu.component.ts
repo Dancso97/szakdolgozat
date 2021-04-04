@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TieredMenuModule} from 'primeng/tieredmenu';
-import {MenuItem} from 'primeng/api/menuitem';
+import {MenuItem, PrimeIcons} from 'primeng/api';
 
 @Component({
   selector: 'app-menu',
@@ -17,93 +16,87 @@ export class AppMenuComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-        label: 'File',
+        label: 'Adatok',
         icon: 'pi pi-fw pi-file',
         items: [
           {
-            label: 'New',
+            label: 'Új adat felvitele',
             icon: 'pi pi-fw pi-plus',
-            items: [
-              {
-                label: 'Bookmark',
-                icon: 'pi pi-fw pi-bookmark'
-              },
-              {
-                label: 'Video',
-                icon: 'pi pi-fw pi-video'
-              },
-
-            ]
           },
           {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-trash'
+            label: 'Adatok kilistázása',
+            icon: 'pi pi-fw pi-bookmark'
           },
           {
             separator: true
           },
           {
-            label: 'Export',
-            icon: 'pi pi-fw pi-external-link'
+            label: 'Adat törlése',
+            icon: 'pi pi-fw pi-trash'
           }
         ]
       },
       {
-        label: 'Edit',
-        icon: 'pi pi-fw pi-pencil',
+        label: 'Feltöltött képek',
+        icon: 'pi pi-fw pi-image',
         items: [
           {
-            label: 'Left',
-            icon: 'pi pi-fw pi-align-left'
-          },
-          {
-            label: 'Right',
-            icon: 'pi pi-fw pi-align-right'
-          },
-          {
-            label: 'Center',
-            icon: 'pi pi-fw pi-align-center'
-          },
-          {
-            label: 'Justify',
-            icon: 'pi pi-fw pi-align-justify'
-          },
-
+            label: 'Listázás',
+            icon: 'pi pi-fw pi-list',
+            routerLink: '/images'
+          }
         ]
       },
       {
-        label: 'Users',
-        icon: 'pi pi-fw pi-user',
+        label: 'Ingatlan adatok',
+        icon: 'pi pi-fw pi-home',
         items: [
           {
-            label: 'New',
+            label: 'Új épület felvitele',
             icon: 'pi pi-fw pi-user-plus',
 
           },
           {
-            label: 'Delete',
+            label: 'Épületek listázása',
+            icon: 'pi pi-fw pi-bars',
+          },
+          {
+            label: 'Épület törlése',
             icon: 'pi pi-fw pi-user-minus',
 
           },
           {
-            label: 'Search',
+            separator: true
+          },
+          {
+            label: 'Címek',
             icon: 'pi pi-fw pi-users',
             items: [
               {
-                label: 'Filter',
-                icon: 'pi pi-fw pi-filter',
-                items: [
-                  {
-                    label: 'Print',
-                    icon: 'pi pi-fw pi-print'
-                  }
-                ]
+                label: 'Új cím felvitele',
+                icon: 'pi pi-fw pi-user-plus',
+                routerLink: '/add-address',
+
               },
               {
+                label: 'Címek listázása',
                 icon: 'pi pi-fw pi-bars',
-                label: 'List'
+                routerLink: '/address'
+              },
+              {
+                label: 'Cím törlése',
+                icon: 'pi pi-fw pi-user-minus',
+                routerLink: '/del-address',
               }
             ]
+          },
+          {
+            separator: true
+          },
+          {
+            label: 'Telepített kliensek',
+            icon: 'pi pi-fw pi-sitemap',
+            items: [],
           }
         ]
       },
@@ -142,8 +135,9 @@ export class AppMenuComponent implements OnInit {
         separator: true
       },
       {
-        label: 'Quit',
-        icon: 'pi pi-fw pi-power-off'
+        label: 'Főoldal',
+        icon: 'pi pi-fw pi-power-off',
+        routerLink: '/dashboard'
       }
     ];
   }

@@ -8,6 +8,9 @@ import javax.validation.constraints.NotNull;
 public class AddressDto {
 
     @NotNull
+    private int id;
+
+    @NotNull
     private int zip;
 
     @NotNull

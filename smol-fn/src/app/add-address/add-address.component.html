@@ -1,0 +1,31 @@
+<div class="p-grid p-fluid">
+
+  <div class="p-col-12 p-md-1 p-lg-1">
+    <span>Irányítószám</span>
+    <p-inputMask mask="9999" [(ngModel)]="newAddress.zip" placeholder="9999"></p-inputMask>
+  </div>
+
+  <div class="p-col-12 p-md-2 p-lg-2">
+    <span>Város</span>
+    <p-autoComplete [(ngModel)]="newAddress.city" [suggestions]="filteredCity" (completeMethod)="filterCity($event)"
+                    [minLength]="1"></p-autoComplete>
+  </div>
+
+  <div class="p-col-12 p-md-2 p-lg-2">
+    <span>Cím</span>
+    <input type="text" pInputText [(ngModel)]="newAddress.address1">
+  </div>
+
+  <div class="p-col-12 p-md-2 p-lg-2">
+    <span>Cím2</span>
+    <input type="text" pInputText [(ngModel)]="newAddress.address2">
+  </div>
+
+  <div class="p-col-12 p-md-1 p-lg-1">
+    <span>Elküld</span>
+    <form (ngSubmit)="addAddress()">
+      <p-button label="Submit" icon="pi pi-check" type="submit"></p-button>
+    </form>
+  </div>
+
+</div>

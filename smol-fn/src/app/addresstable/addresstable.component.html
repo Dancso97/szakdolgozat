@@ -1,0 +1,20 @@
+<p-table [value]="addresses">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Irsz</th>
+      <th>Város</th>
+      <th>Utca</th>
+      <th>Utca (2) </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-address>
+    <tr>
+      <td>{{address.id}}</td>
+      <td>{{address.zip}}</td>
+      <td>{{address.city}}</td>
+      <td>{{address.address1}}</td>
+      <td> {{address.address2}} </td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,39 @@
+<div class="p-grid">
+  <div class="p-col-12">
+    <div class="box" align="center">
+      <span class="p-float-label p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" id="inputtext-left"  pInputText [(ngModel)]="idToBeSearched" (change)="getAddressById()">
+            <label for="inputtext-left">ID a cím törléshez</label>
+        </span>
+    </div>
+  </div>
+</div>
+
+
+<div class="p-grid">
+  <div class="p-col-3">
+    <span>Irányítószám</span>
+    <div class="box">
+      <input id="zip" type="text" size="30" pInputText [disabled]="true" [(ngModel)]="addressData.zip" />
+    </div>
+  </div>
+  <div class="p-col-3">
+    <span>Város</span>
+    <div class="box">
+      <input id="city" type="text" size="30" pInputText [disabled]="true"  [(ngModel)]="addressData.city"/>
+    </div>
+  </div>
+  <div class="p-col-3">
+    <span>Utca</span>
+    <div class="box">
+      <input id="address1" type="text" size="30" pInputText [disabled]="true"  [(ngModel)]="addressData.address1"/>
+    </div>
+  </div>
+  <div class="p-col-3">
+    <span>Utca (2)</span>
+    <div class="box">
+      <input id="address2" type="text" size="30" pInputText [disabled]="true" [(ngModel)]="addressData.address2"/>
+    </div>
+  </div>
+</div>
