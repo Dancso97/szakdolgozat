@@ -1,0 +1,38 @@
+<div class="p-grid">
+  <div class="p-col-12">
+    <div class="box" align="center">
+      <p>ID a törléshez</p>
+      <span class="p-float-label p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" id="inputtext-left" pInputText [(ngModel)]="idToBeSearched" (change)="getClientById()">
+        </span>
+    </div>
+  </div>
+</div>
+<div class="p-grid">
+
+  <div class="p-col-3">
+    <span>Tipus</span>
+    <div class="box">
+      <input id="zip" type="text" size="30" pInputText [disabled]="true" [(ngModel)]="clientData.type"/>
+    </div>
+  </div>
+
+  <div class="p-col-3">
+    <span>Név</span>
+    <div class="box">
+      <input id="city" type="text" size="30" pInputText [disabled]="true" [(ngModel)]="clientData.name"/>
+    </div>
+  </div>
+
+    <div class="p-col-3">
+      <div class="box">
+        <span>Törlés</span>
+        <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+        <form>
+          <p-button (onClick)="confirmDelete()" icon="pi pi-times" label="Törlés"></p-button>
+        </form>
+      </div>
+      <p-toast></p-toast>
+    </div>
+  </div>

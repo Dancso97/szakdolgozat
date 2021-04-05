@@ -22,6 +22,12 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import { DelAddressComponent } from './del-address/del-address.component';
 import {FocusTrapModule} from 'primeng/focustrap';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ClienttableComponent } from './clienttable/clienttable.component';
+import { AddClientComponent } from './add-client/add-client.component';
+import { DelClientComponent } from './del-client/del-client.component';
+import { BuildingtableComponent } from './buildingtable/buildingtable.component';
+import { AddBuildingComponent } from './add-building/add-building.component';
+import { DelBuildingComponent } from './del-building/del-building.component';
 
 
 @NgModule({
@@ -33,7 +39,13 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
     DashboardComponent,
     AddresstableComponent,
     AddAddressComponent,
-    DelAddressComponent
+    DelAddressComponent,
+    ClienttableComponent,
+    AddClientComponent,
+    DelClientComponent,
+    BuildingtableComponent,
+    AddBuildingComponent,
+    DelBuildingComponent
   ],
   imports: [
     BrowserModule,

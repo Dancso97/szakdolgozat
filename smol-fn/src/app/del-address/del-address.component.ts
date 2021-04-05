@@ -47,7 +47,6 @@ export class DelAddressComponent implements OnInit {
       return;
     }
     else{
-      // tslint:disable-next-line:no-unused-expression
       this.addressData.id = found.id;
       this.addressData.zip = found.zip;
       this.addressData.city = found.city;

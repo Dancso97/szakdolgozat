@@ -54,16 +54,17 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'Új épület felvitele',
             icon: 'pi pi-fw pi-user-plus',
-
+            routerLink: '/add-building',
           },
           {
             label: 'Épületek listázása',
             icon: 'pi pi-fw pi-bars',
+            routerLink: '/building',
           },
           {
             label: 'Épület törlése',
             icon: 'pi pi-fw pi-user-minus',
-
+            routerLink: '/del-building',
           },
           {
             separator: true
@@ -96,7 +97,24 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'Telepített kliensek',
             icon: 'pi pi-fw pi-sitemap',
-            items: [],
+            items: [
+              {
+                label: 'Új kliens felvitele',
+                icon: 'pi pi-fw pi-user-plus',
+                routerLink: '/add-client',
+
+              },
+              {
+                label: 'Kliensek listázása',
+                icon: 'pi pi-fw pi-bars',
+                routerLink: '/client'
+              },
+              {
+                label: 'Kliens törlése',
+                icon: 'pi pi-fw pi-user-minus',
+                routerLink: '/del-client',
+              }
+            ]
           }
         ]
       },
