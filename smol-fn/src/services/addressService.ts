@@ -15,8 +15,9 @@ export class AddressService {
   addAddress(address: Address){
     return this.http.post<Address>('http://localhost:8080/address', address);
   }
+
   // tslint:disable-next-line:typedef
   deleteAddress(id: number){
-    return this.http.delete('http://localhost:8080/address/${id}', {});
+    return this.http.delete(`http://localhost:8080/address/${id}`, {});
   }
 }

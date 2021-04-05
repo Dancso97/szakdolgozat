@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {Address} from '../../models/address';
 import {AddressService} from '../../services/addressService';
 import {Router} from '@angular/router';
+import {ConfirmationService, ConfirmEventType, MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-del-address',
   templateUrl: './del-address.component.html',
   styleUrls: ['./del-address.component.css'],
-  providers: [AddressService]
+  providers: [AddressService, ConfirmationService, MessageService]
 })
 export class DelAddressComponent implements OnInit {
 
@@ -23,8 +24,8 @@ export class DelAddressComponent implements OnInit {
     address2: ''
   };
 
-  constructor(private addressService: AddressService, private router: Router) {
-  }
+  // tslint:disable-next-line:max-line-length
+  constructor(private addressService: AddressService, private router: Router, private confirmationService: ConfirmationService, private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.addressService.getAddressList().subscribe(result => {
@@ -35,15 +36,14 @@ export class DelAddressComponent implements OnInit {
       console.log(error);
     });
   }
-
-
-   // @ts-ignore
+  // tslint:disable-next-line:typedef
   getAddressById(){
     let found: Address | any;
     found = this.searchAddressById();
     console.log(found);
     if (found === undefined){
-      console.log('Working'); // Implement this
+      this.addressData.zip = -1;
+      this.addressData.city = 'Nincs ilyen ID-vel rendelkező cím';
       return;
     }
     else{
@@ -55,33 +55,51 @@ export class DelAddressComponent implements OnInit {
       this.addressData.address2 = found.address2;
     }
   }
-
-  /*
-  // @ts-ignore
+  // tslint:disable-next-line:typedef
   searchAddressById(){
-    let id = this.idToBeSearched;
-    console.log('ID is ', id);
-    for (let i = 0; i < this.addresses.length; i++) {
-      let element = this.addresses[i];
-      console.log('Id in for is: ', element.id);
-      if (element.id === id){
-        return element;
-      }
-      else{
-        return false;
-      }
-    }
-  }
-*/
-  // @ts-ignore
-  searchAddressById(){
-    let id = this.idToBeSearched;
+    const id = this.idToBeSearched;
     console.log('Id is :', id);
     // @ts-ignore
-    let index = this.addresses.findIndex(address => address.id == id);
+    const index = this.addresses.findIndex(address => address.id == id);
     return this.addresses[index];
   }
   deleteAddress(): void {
-    console.log();
+    // @ts-ignore
+    if (this.addressData.id > 0 && this.addressData.id != null){
+      this.addressService.deleteAddress(this.addressData.id).subscribe(result => {
+        console.log(result);
+        this.messageService.add({severity: 'info', summary: 'Sikeres törlés', detail: 'Cím törölve'});
+        setTimeout(() => {
+          this.router.navigate(['/address']);
+        }, 2000);  // 5s
+      }, error => {
+        console.log(error);
+        this.messageService.add({severity: 'error', summary: 'Sikertelen törlés', detail: 'A törlés nem sikeres'});
+      });
+    }
+    else{
+      this.messageService.add({severity: 'error', summary: 'Sikertelen törlés', detail: 'Hibás ID!'});
+    }
+  }
+  // tslint:disable-next-line:typedef
+  confirmDelete() {
+    this.confirmationService.confirm({
+      message: 'Tényleg törölni akarja a címet?',
+      header: 'Törlés megerősítése',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.deleteAddress();
+      },
+      reject: (type: any) => {
+        switch (type) {
+          case ConfirmEventType.REJECT:
+            this.messageService.add({severity: 'error', summary: 'Sikertelen törlés', detail: 'Ön elutasította a törlést'});
+            break;
+          case ConfirmEventType.CANCEL:
+            this.messageService.add({severity: 'warn', summary: 'Megszakított törlés', detail: 'Ön megszakította a törlést'});
+            break;
+        }
+      }
+    });
   }
 }

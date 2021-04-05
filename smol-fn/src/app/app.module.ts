@@ -21,7 +21,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import { DelAddressComponent } from './del-address/del-address.component';
 import {FocusTrapModule} from 'primeng/focustrap';
-
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -49,6 +49,7 @@ import {FocusTrapModule} from 'primeng/focustrap';
     InputTextModule,
     FormsModule,
     FocusTrapModule,
+    ConfirmDialogModule,
     AutoCompleteModule
   ],
   providers: [],

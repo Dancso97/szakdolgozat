@@ -37,7 +37,9 @@ export class AddAddressComponent implements OnInit {
 
   addAddress(): void {
     this.addressService.addAddress(this.newAddress).subscribe(address => this.addresses.push(this.newAddress));
-    this.router.navigate(['/address']);
+    setTimeout(() => {
+      this.router.navigate(['/address']);
+    }, 2000);  // 5s
   }
 
   // @ts-ignore

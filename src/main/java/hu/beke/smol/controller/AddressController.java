@@ -62,6 +62,7 @@ public class AddressController {
     @DeleteMapping("/{id}")
     public HttpStatus deleteAddress(@PathVariable int id) throws ControllerException{
         try{
+            System.out.println("Id recieved : "+ id);
             service.deleteAddress(id);
             return HttpStatus.OK;
         }catch (ServiceException e){

@@ -24,7 +24,7 @@ public class AddressRepositoryImpl implements AddressRepository {
     public AddressEntity getAddressEntityById(int id) throws PersistenceException {
         AddressEntity result = null;
         try {
-            TypedQuery<AddressEntity> query = this.entityManager.createQuery("SELECT entity FROM Address entity WHERE entity.zip = :id", AddressEntity.class);
+            TypedQuery<AddressEntity> query = this.entityManager.createQuery("SELECT entity FROM Address entity WHERE entity.id = :id", AddressEntity.class);
             query.setParameter("id", id);
 
             result = query.getSingleResult();
