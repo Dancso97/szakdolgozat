@@ -1,19 +1,19 @@
 package hu.beke.smol.controller;
 
-import hu.beke.smol.dto.CreateDataDto;
-import hu.beke.smol.dto.CreateImageDto;
-import hu.beke.smol.dto.DataDto;
-import hu.beke.smol.dto.ImageDto;
+import hu.beke.smol.dto.*;
 import hu.beke.smol.exceptions.ControllerException;
 import hu.beke.smol.exceptions.ServiceException;
 import hu.beke.smol.service.DataService;
+import hu.beke.smol.service.ImageMetadataService;
 import hu.beke.smol.service.ImageService;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -27,6 +27,9 @@ public class DataController {
 
     @Autowired
     private ImageService imageService;
+
+    @Autowired
+    private ImageMetadataService metadataService;
 
     @GetMapping
     public List<DataDto> getAllData() throws ControllerException{
@@ -45,24 +48,29 @@ public class DataController {
         }
     }
 
-    /*
     @PostMapping("/upload")
-    public HttpStatus createData(@Valid @RequestBody CreateDataDto dto) throws ControllerException {
+    public HttpStatus createData(@RequestPart(value = "plate", required = true) String plate ,@RequestPart(value = "file", required=true) MultipartFile file, @RequestPart(required=true) CreateImageMetadataDto metadata) throws ControllerException {
         try {
-
+            CreateDataDto dataDto = new CreateDataDto();
             CreateImageDto imageDto = new CreateImageDto();
-            ImageDto createdImage = img_service.createImage(imageDto);
-            CreateDataDto createDataDto = new CreateDataDto();
-            DataDto returned = service.createData(createDataDto);
+            ImageMetadataDto metadataDto = metadataService.createImageMetadata(metadata);
 
+            imageDto.setImage(file.getBytes());
+            imageDto.setPictureMetadata(metadataDto);
+            ImageDto createdImage = imageService.createImage(imageDto);
+
+            dataDto.setPlate(plate);
+            dataDto.setImage(createdImage);
+
+            DataDto returned = service.createData(dataDto);
 
             return HttpStatus.OK;
-
-        }catch (ServiceException e){
-            throw new ControllerException("Failed in createData in upload controller! ", e);
+        }catch (ServiceException | IOException e){
+            throw new ControllerException("Failed in createData contorller ",e);
         }
+
+
     }
- */
     @PutMapping
     public HttpStatus updateDataDto(@RequestParam @Valid DataDto dataDto) throws ControllerException {
         try {

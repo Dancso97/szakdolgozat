@@ -36,7 +36,6 @@ public class DataEntity {
     private ImageEntity image;
 
     @OneToOne(orphanRemoval = true)
-    @NotNull
     @JoinColumn(name = "service")
     private ServicesEntity service;
 

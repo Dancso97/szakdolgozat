@@ -8,7 +8,6 @@ import java.sql.Timestamp;
 @Data
 public class CreateImageDto {
 
-    @NotNull
     private Timestamp date;
 
     @NotNull

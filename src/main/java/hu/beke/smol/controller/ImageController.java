@@ -69,7 +69,6 @@ public class ImageController {
 
             imageDto.setImage(file.getBytes());
             imageDto.setPictureMetadata(metadataDto);
-
             ImageDto returned = service.createImage(imageDto);
 
             return HttpStatus.OK;

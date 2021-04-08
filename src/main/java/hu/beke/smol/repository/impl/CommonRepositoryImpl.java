@@ -20,7 +20,6 @@ public class CommonRepositoryImpl implements CommonRepository {
     @Override
     public void createEntity(Object object) throws PersistenceException {
         try {
-            System.out.println("Object to persist:\n" + object.toString());
             this.entityManager.persist(object);
             this.entityManager.flush();
         } catch (RuntimeException e) {

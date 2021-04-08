@@ -17,7 +17,6 @@ public class CreateImageMetadataDto {
     @NotNull
     private int width;
 
-    @NotNull
     private Date originalDate;
 
 }

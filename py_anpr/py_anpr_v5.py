@@ -4,7 +4,8 @@ import numpy as np
 import pytesseract
 import os
 import re
-
+from metadata import getMetadata
+from utils import uploadToServer
 #TODO: Export pictures to a separate dir
 ###
 
@@ -23,8 +24,11 @@ def start_reading():
     for imageName in file_names:
         print(imageName)
         plate_number = readLicensePlate(dirname+imageName)
-        list_item = {"plate"+str(i) : {"imageName":imageName, "PlateNumber":plate_number} }
-        listOfPlates.update(list_item)
+        if(plate_number != '' ):
+            uploadToServer(imageName,getMetadata(dirname+imageName), plate_number)
+           
+            
+         
         i+=1
     
     print(listOfPlates)
@@ -100,8 +104,6 @@ def readLicensePlate(imageName):
 
         matrix = cv2.getPerspectiveTransform(pts1, pts2)
         
-        #TODO widht and height calculate dinamically
-        
         imgWarpColored = cv2.warpPerspective(img, matrix, (widthImg, heightImg))
         
         cv2.imshow("ImgWarpColored", imgWarpColored)
@@ -118,9 +120,11 @@ def readLicensePlate(imageName):
         if(len(license_plate) > 0):
             return license_plate
         
-        return 0 ## Make it sep directory, check another regex eg: 3 char 2 number
+        return '' ## Make it sep directory, check another regex eg: 3 char 2 number
 
     else:
         print("No contour found")
         
-        return 0
+        return ''
+
+start_reading()

@@ -24,14 +24,9 @@ public class CreateDataDto {
     @NotNull
     private int serviceId;
 
-
-    /*
     @NotNull
     private ImageDto image;
 
-    @NotNull
-    private ServicesDto service;
+    private CreateServicesDto service;
 
-    /*
-     */
 }
