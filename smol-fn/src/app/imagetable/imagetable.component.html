@@ -13,7 +13,7 @@
       <td>{{image.id}}</td>
       <td>{{image.date}}</td>
       <td>
-        <img src="data:image/JPEG;base64,{{image.image}}" alt="" style="width: 300px"/>
+        <img src="data:image/JPEG;base64,{{image.image}}" alt="" style="width: 300px; height: 300px"/>
       </td>
       <td> <button type="button" pButton pRipple (click)="showImageMetadata(image.id)" label="Metaadatok" class="p-button-info"></button> </td>
     </tr>

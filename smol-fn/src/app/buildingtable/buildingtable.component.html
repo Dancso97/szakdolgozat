@@ -1,1 +1,20 @@
-<p>buildingtable works!</p>
+<p-table [value]="buildings">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Létrehozás ideje</th>
+      <th>Cím</th>
+      <th>Kliens ID</th>
+      <th>Egyéb megjegyzés</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-building>
+    <tr>
+      <td>{{building.id}}</td>
+      <td>{{building.addedDate}}</td>
+      <td>{{building.address.zip}} {{building.address.city}} {{building.address.address1}} {{building.address.address2}}</td>
+      <td>{{building.client.id}}</td>
+      <td> {{building.comment}} </td>
+    </tr>
+  </ng-template>
+</p-table>

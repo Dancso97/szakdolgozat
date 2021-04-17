@@ -22,17 +22,20 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'Új adat felvitele',
             icon: 'pi pi-fw pi-plus',
+            routerLink: '/add-data',
           },
           {
             label: 'Adatok kilistázása',
-            icon: 'pi pi-fw pi-bookmark'
+            icon: 'pi pi-fw pi-bookmark',
+            routerLink: '/data',
           },
           {
             separator: true
           },
           {
             label: 'Adat törlése',
-            icon: 'pi pi-fw pi-trash'
+            icon: 'pi pi-fw pi-trash',
+            routerLink: '/del-data',
           }
         ]
       },
@@ -119,31 +122,48 @@ export class AppMenuComponent implements OnInit {
         ]
       },
       {
-        label: 'Events',
+        label: 'Szolgáltatások',
         icon: 'pi pi-fw pi-calendar',
         items: [
           {
-            label: 'Edit',
+            label: 'Igényelt szolgáltatások',
             icon: 'pi pi-fw pi-pencil',
             items: [
               {
-                label: 'Save',
-                icon: 'pi pi-fw pi-calendar-plus'
+                label: 'Új szolgáltatás igénylése',
+                icon: 'pi pi-fw pi-calendar-plus',
+                routerLink: '/add-service-type',
               },
               {
-                label: 'Delete',
-                icon: 'pi pi-fw pi-calendar-minus'
+                label: 'Igényelt szolgáltatások listázása',
+                icon: 'pi pi-fw pi-calendar-minus',
+                routerLink: '/service-type',
               },
-
+              {
+                label: 'Igényelt szolgáltatás törlése',
+                icon: 'pi pi-fw pi-calendar-minus',
+                routerLink: '/del-service-type'
+              }
             ]
           },
           {
-            label: 'Archieve',
+            label: 'Szolgáltatás tipusok',
             icon: 'pi pi-fw pi-calendar-times',
             items: [
               {
-                label: 'Remove',
-                icon: 'pi pi-fw pi-calendar-minus'
+                label: 'Szolgáltatás hozzáadása',
+                icon: 'pi pi-fw pi-calendar-minus',
+                routerLink: '/add-service'
+              },
+              {
+                label: 'Szolgáltatások listázása',
+                icon: 'pi pi-fw pi-calendar-minus',
+                routerLink: '/service'
+              },
+              {
+                label: 'Szolgáltatás törlése',
+                icon: 'pi pi-fw pi-calendar-minus',
+                routerLink: '/del-service'
               }
             ]
           }

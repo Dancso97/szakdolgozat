@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {DropdownModule} from 'primeng/dropdown';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppMenuComponent } from './menu/app-menu.component';
@@ -28,6 +28,14 @@ import { DelClientComponent } from './del-client/del-client.component';
 import { BuildingtableComponent } from './buildingtable/buildingtable.component';
 import { AddBuildingComponent } from './add-building/add-building.component';
 import { DelBuildingComponent } from './del-building/del-building.component';
+import { ServicetableComponent } from './servicetable/servicetable.component';
+import { AddServiceComponent } from './add-service/add-service.component';
+import { DelServiceComponent } from './del-service/del-service.component';
+import { ServicetypetableComponent } from './servicetypetable/servicetypetable.component';
+import { AddServicetypeComponent } from './add-servicetype/add-servicetype.component';
+import { DelServicetypeComponent } from './del-servicetype/del-servicetype.component';
+import { AddDataComponent } from './add-data/add-data.component';
+import { DelDataComponent } from './del-data/del-data.component';
 
 
 @NgModule({
@@ -45,7 +53,15 @@ import { DelBuildingComponent } from './del-building/del-building.component';
     DelClientComponent,
     BuildingtableComponent,
     AddBuildingComponent,
-    DelBuildingComponent
+    DelBuildingComponent,
+    ServicetableComponent,
+    AddServiceComponent,
+    DelServiceComponent,
+    ServicetypetableComponent,
+    AddServicetypeComponent,
+    DelServicetypeComponent,
+    AddDataComponent,
+    DelDataComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +78,8 @@ import { DelBuildingComponent } from './del-building/del-building.component';
     FormsModule,
     FocusTrapModule,
     ConfirmDialogModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

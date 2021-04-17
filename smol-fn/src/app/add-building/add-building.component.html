@@ -1,1 +1,48 @@
-<p>add-building works!</p>
+<div class="p-grid p-fluid p-align-center">
+
+  <div class="p-col-12 p-md-3 p-lg-3">
+    <input type="text" pInputText [(ngModel)]="comment" placeholder="Épület megnevezése">
+  </div>
+
+  <div class="p-col-12 p-md-3 p-lg-3">
+    <p-dropdown
+      [options]="addresses" [(ngModel)]="selectedAddress" placeholder="Válasszon címet!" optionLabel="id" [showClear]="true">
+      <ng-template pTemplate="selectedItem">
+        <div class="address-item address-item-value" *ngIf="selectedAddress">
+          <div>
+            {{selectedAddress.zip}} {{selectedAddress.city}} {{selectedAddress.address1}} {{selectedAddress.address2}}
+          </div>
+        </div>
+      </ng-template>
+      <ng-template let-address pTemplate="item">
+        <div class="address-item">
+          <div>{{address.zip}} {{address.city}} {{address.address1}} {{address.address2}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+
+  <div class="p-col-12 p-md-3 p-lg-3">
+    <p-dropdown [options]="clients" [(ngModel)]="selectedClient" placeholder="Válasszon klienst" optionLabel="name" [showClear]="true">
+      <ng-template pTemplate="selectedItem">
+        <div class="client-item client-item-value" *ngIf="selectedClient">
+          <div>
+            {{selectedClient.type}} {{selectedClient.name}}
+          </div>
+        </div>
+      </ng-template>
+      <ng-template let-client pTemplate="item">
+        <div class="client-item">
+          <div>{{client.type}} {{client.name}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+
+  <div class="p-col-12 p-md-3 p-lg-3 ">
+    <form (ngSubmit)=addBuilding()>
+      <p-button label="Elküld" icon="pi pi-check" type="Submit"></p-button>
+    </form>
+  </div>
+
+</div>

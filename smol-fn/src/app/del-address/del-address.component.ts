@@ -12,7 +12,6 @@ import {ConfirmationService, ConfirmEventType, MessageService} from 'primeng/api
 })
 export class DelAddressComponent implements OnInit {
 
-  // @ts-ignore
   addresses: Address[] = [];
   // @ts-ignore
   idToBeSearched = 0;
