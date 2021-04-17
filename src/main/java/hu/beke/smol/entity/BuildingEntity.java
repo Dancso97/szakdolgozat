@@ -24,7 +24,7 @@ public class BuildingEntity {
     @Column(name = "comment")
     private String comment;
 
-    @OneToOne
+    @OneToOne(orphanRemoval = true)
     @NotNull
     @JoinColumn(name = "address")
     private AddressEntity address;

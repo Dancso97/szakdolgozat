@@ -8,7 +8,6 @@ import java.sql.Timestamp;
 @Data
 public class CreateBuildingDto {
 
-    @NotNull
     private Timestamp addedDate;
 
     @NotNull
