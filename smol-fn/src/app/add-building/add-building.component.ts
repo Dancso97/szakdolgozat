@@ -19,10 +19,8 @@ export class AddBuildingComponent implements OnInit {
   addresses: Address[];
   // @ts-ignore
   clients: Client[];
-
   // @ts-ignore
   comment: string;
-
   // @ts-ignore
   selectedClient: Client;
   // @ts-ignore
@@ -50,12 +48,6 @@ export class AddBuildingComponent implements OnInit {
     this.addressService.getAddressList().subscribe(result => {
       // @ts-ignore
       this.addresses = result;
-    }, error => {
-      console.log(error);
-    });
-    this.buildingService.getBuildingList().subscribe(result => {
-      // @ts-ignore
-      this.buldings = result;
     }, error => {
       console.log(error);
     });

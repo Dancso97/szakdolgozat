@@ -36,6 +36,7 @@ import {AddServicetypeComponent} from './add-servicetype/add-servicetype.compone
 import {DelServicetypeComponent} from './del-servicetype/del-servicetype.component';
 import {AddDataComponent} from './add-data/add-data.component';
 import {DelDataComponent} from './del-data/del-data.component';
+import {CalendarModule} from 'primeng/calendar';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import {DelDataComponent} from './del-data/del-data.component';
     FocusTrapModule,
     ConfirmDialogModule,
     AutoCompleteModule,
+    CalendarModule,
     DropdownModule
   ],
   providers: [],
