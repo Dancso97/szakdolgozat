@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DelClientComponent } from './del-client.component';
+import {DelClientComponent} from './del-client.component';
 
 describe('DelClientComponent', () => {
   let component: DelClientComponent;

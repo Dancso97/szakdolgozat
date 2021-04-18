@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ServicetypetableComponent } from './servicetypetable.component';
+import {ServicetypetableComponent} from './servicetypetable.component';
 
 describe('ServicetypetableComponent', () => {
   let component: ServicetypetableComponent;

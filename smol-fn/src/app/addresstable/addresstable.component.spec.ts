@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AddresstableComponent } from './addresstable.component';
+import {AddresstableComponent} from './addresstable.component';
 
 describe('AddresstableComponent', () => {
   let component: AddresstableComponent;

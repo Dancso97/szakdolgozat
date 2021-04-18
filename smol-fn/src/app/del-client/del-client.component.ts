@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ClientService} from '../../services/clientService';
 import {Client} from '../../models/client';
 import {Router} from '@angular/router';
 import {ConfirmationService, ConfirmEventType, MessageService} from 'primeng/api';
+
 @Component({
   selector: 'app-del-client',
   templateUrl: './del-client.component.html',

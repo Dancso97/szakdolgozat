@@ -35,13 +35,13 @@ export class ImagetableComponent implements OnInit {
   showImageMetadata(id_number: number) {
 
     let key;
-    for(key in this.images) {
+    for (key in this.images) {
       if (this.images[key].id === id_number){
         // @ts-ignore
         this.messageService.add({severity: 'info', summary: 'A kép metaadata:', detail: `Név:${this.images[key].pictureMetadata.name}\nSzélessége: ${this.images[key].pictureMetadata.width}\nMagassága:${this.images[key].pictureMetadata.height}\nBekerülés dátuma:${this.images[key].pictureMetadata.originalDate}`
         });
       }else {
-        //this.messageService.add({severity: 'info', summary: 'A kép metaadata:', detail: 'Nem található!' });
+        // this.messageService.add({severity: 'info', summary: 'A kép metaadata:', detail: 'Nem található!' });
       }
     }
   }

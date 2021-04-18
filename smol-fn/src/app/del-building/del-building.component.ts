@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ConfirmationService, ConfirmEventType, MessageService} from 'primeng/api';
 import {Building} from '../../models/building';

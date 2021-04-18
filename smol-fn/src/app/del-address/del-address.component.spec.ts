@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DelAddressComponent } from './del-address.component';
+import {DelAddressComponent} from './del-address.component';
 
 describe('DelAddressComponent', () => {
   let component: DelAddressComponent;

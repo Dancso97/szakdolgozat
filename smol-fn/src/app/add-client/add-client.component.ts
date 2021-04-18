@@ -39,7 +39,7 @@ export class AddClientComponent implements OnInit {
     this.clientService.addClient(this.newClient).subscribe(client => this.clients.push(this.newClient));
     setTimeout(() => {
       this.router.navigate(['/client']);
-    }, 2000);  // 5s
+    }, 2000);  // 2s
   }
 
   // @ts-ignore

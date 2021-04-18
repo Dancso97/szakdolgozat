@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {ImagetableComponent} from './imagetable/imagetable.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {AddresstableComponent} from './addresstable/addresstable.component';

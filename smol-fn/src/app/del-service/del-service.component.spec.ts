@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DelServiceComponent } from './del-service.component';
+import {DelServiceComponent} from './del-service.component';
 
 describe('DelServiceComponent', () => {
   let component: DelServiceComponent;
