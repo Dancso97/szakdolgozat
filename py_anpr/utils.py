@@ -17,8 +17,10 @@ def uploadToServer(imageName, imageMetadata, plate_number):
     print("In server upload!\n")
 
     imageMetadata['name'] = imageName
+    print("Metadata is {}".format(imageMetadata))
+    print("Plate is {}".format(plate_number))
     files = [
-        ('plate', (plate_number[0])),
+        ('plate', plate_number),
         ('file', (imageName, open('kepek/{}'.format(imageName), 'rb'), 'image/jpeg')),
         ('metadata', ('metadata', json.dumps(imageMetadata), 'application/json'))
     ]
@@ -76,4 +78,3 @@ def stopProcess(processPid):
     for child in parent.children(recursive=True):  # or parent.children() for recursive=False
         child.kill()
     parent.kill()
-    return 'Killed process {}'.format(processPid)

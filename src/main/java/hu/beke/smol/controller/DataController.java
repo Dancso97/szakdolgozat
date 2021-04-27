@@ -66,13 +66,13 @@ public class DataController {
 
             return HttpStatus.OK;
         }catch (ServiceException | IOException e){
-            throw new ControllerException("Failed in createData contorller ",e);
+            throw new ControllerException("Failed in createData controller ",e);
         }
 
 
     }
     @PutMapping
-    public HttpStatus updateDataDto(@RequestParam @Valid DataDto dataDto) throws ControllerException {
+    public HttpStatus updateDataDto(@RequestBody @Valid DataDto dataDto) throws ControllerException {
         try {
             DataDto returned = service.updateData(dataDto);
             return HttpStatus.OK;

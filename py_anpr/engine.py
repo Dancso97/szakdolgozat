@@ -90,16 +90,20 @@ def autoStop():
         utils.stopProcess(backendPid)
         utils.stopProcess(frontendPid)
         engineRunning = False
-        backendPid, frontendPid = 0
+        backendPid=0
+        frontendPid = 0
     else:
         if backendPid > 0:
             print("Backend was started,stopping...")
             utils.stopProcess(backendPid)
+            backendPid = 0
         if frontendPid > 0:
             print("Frontend was started,stopping...")
             utils.stopProcess(frontendPid)
+            frontendPid = 0
         else:
             print("None of processes was started by me :( ")
 
     print("Engine stopped!")
+    return
     menu()

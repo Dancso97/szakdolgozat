@@ -1,1 +1,51 @@
-<p>add-data works!</p>
+<div class="p-grid p-fluid p-align-center">
+
+  <div class="p-col-12 p-md-3 p-lg-3">
+    <input type="comment" pInputText [(ngModel)]="selectedComment" placeholder="Egyéb infó">
+  </div>
+
+  <div class="p-col-12 p-md-3 p-lg-3">
+    <p-calendar [(ngModel)]="selectedEndDate" [showTime]="true" inputId="time" placeholder="Érvényeség vége"></p-calendar>
+  </div>
+
+  <div class="p-col-12 p-md-3 p-lg-3">
+    <p-dropdown [options]="datas" [(ngModel)]="selectedData" placeholder="Válasszon adatot" optionLabel="id" [showClear]="true">
+      <ng-template pTemplate="selectedItem">
+        <div class="image-item image-item-value" *ngIf="selectedData">
+          <div>
+            {{selectedData.id}}
+          </div>
+        </div>
+      </ng-template>
+      <ng-template let-data pTemplate="item">
+        <div class="image-item">
+          <div>{{data.id}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+
+  <div class="p-col-12 p-md-3 p-lg-3">
+    <p-dropdown [options]="services" [(ngModel)]="selectedService" placeholder="Válasszon szolgáltatási címet" optionLabel="id" [showClear]="true">
+      <ng-template pTemplate="selectedItem">
+        <div class="service-item service-item-value" *ngIf="selectedService">
+          <div>
+            {{selectedService.id}}
+          </div>
+        </div>
+      </ng-template>
+      <ng-template let-service pTemplate="item">
+        <div class="service-item">
+          <div>{{service.id}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+
+  <div class="p-col-12 p-md-3 p-lg-3 ">
+    <form (ngSubmit)=addData()>
+      <p-button label="Elküld" icon="pi pi-check" type="Submit"></p-button>
+    </form>
+  </div>
+
+</div>

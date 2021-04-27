@@ -24,9 +24,8 @@ def start_reading():
         print(imageName)
         plate_number = readLicensePlate(dirname + imageName)
         if plate_number != '':
-            print(plate_number)
-            # uploadToServer(imageName,getMetadata(dirname+imageName), plate_number)
-
+            metadata = getMetadata(dirname+imageName)
+            uploadToServer(imageName, metadata, plate_number)
         i += 1
 
 
@@ -110,24 +109,18 @@ def readLicensePlate(imageName):
         cv2.waitKey(0)
 
         # OCR
-        textSample = pytesseract.image_to_string(sample, config='--tessdata-dir "C:\\Program Files (x86)\\Tesseract\\tessdata" --psm 6 --oem 2')
-        text = pytesseract.image_to_string(imgWarpColored, config='--tessdata-dir "C:\\Program Files (x86)\\Tesseract\\tessdata" --psm 6 --oem 2')
+        text = pytesseract.image_to_string(imgWarpColored, lang='eng', config='--tessdata-dir "C:\\Program Files (x86)\\Tesseract\\tessdata" --oem 2  --psm 11 tessedit_char_whitelist = ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
 
-        print("Found text : {}".format(textSample.replace(" ", "")))
         print("Found text : {}".format(text.replace(" ", "")))
         license_plate_string = re.findall(r"[A-Z]{3}", text.replace(" ", ""))
         license_plate_numbers = re.findall(r"[0-9]{3}",text.replace(" ", ""))
         license_plate = ''
         if len(license_plate_string) > 0 and len(license_plate_numbers) > 0:
             license_plate = license_plate_string[0] + '-' + license_plate_numbers[0]
-            print("License plate {}".format(license_plate))
-
-        if len(license_plate) > 0:
+            print(license_plate)
             return license_plate
 
         return ''
     else:
         print("No contour found")
         return ''
-
-start_reading()
